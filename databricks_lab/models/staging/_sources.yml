@@ -6,3 +6,6 @@ sources:
     schema: default
     tables:
       - name: transactions
+      - name: customer_master
+      - name: order_items
+      - name: product_catalog

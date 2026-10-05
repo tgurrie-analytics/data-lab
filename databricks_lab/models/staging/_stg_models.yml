@@ -6,6 +6,37 @@ models:
       - name: order_id
         tests: [unique, not_null]
       - name: customer_id
-        tests: [not_null]
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_customer_master')
+              field: customer_id
       - name: order_date
+        tests: [not_null]
+
+  - name: stg_customer_master
+    columns:
+      - name: customer_id
+        tests: [unique, not_null]
+
+  - name: stg_product_catalog
+    columns:
+      - name: product_id
+        tests: [unique, not_null]
+
+  - name: stg_order_items
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_transactions')
+              field: order_id
+      - name: product_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_product_catalog')
+              field: product_id
+      - name: quantity
         tests: [not_null]
