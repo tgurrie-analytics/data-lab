@@ -5,7 +5,7 @@ select
     product_subcategory,
     brand,
     supplier,
-    cast(unit_price as decimal(18,2)) as unit_price,
-    cast(product_cost as decimal(18,2)) as unit_cost,
+    {{ money('unit_price') }} as unit_price,
+    {{ money('product_cost') }} as unit_cost,
     cast(product_rating as decimal(3,1)) as product_rating
 from {{ source('raw', 'product_catalog') }}
