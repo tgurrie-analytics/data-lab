@@ -33,3 +33,5 @@ models:
   databricks_lab:
     staging:
       +materialized: view
+    marts:
+      +materialized: table

@@ -40,3 +40,5 @@ models:
               field: product_id
       - name: quantity
         tests: [not_null]
+      - name: line_id
+        tests: [unique, not_null]
